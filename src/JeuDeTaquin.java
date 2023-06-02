@@ -44,7 +44,7 @@ public class JeuDeTaquin extends JFrame {
         Random random = new Random();
         for (int i = 0; i < 1000; i++) {
             int direction = random.nextInt(4);
-            grille.deplacerCaseVide(String.valueOf(direction));
+
         }
     }
 
@@ -67,7 +67,6 @@ public class JeuDeTaquin extends JFrame {
                     direction = "droite";
                     break;
             }
-            grille.deplacerCaseVide(direction);
             repaint();
         }
     }

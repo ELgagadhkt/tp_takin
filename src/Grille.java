@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Grille {
 
-    private final int size;
+    public int size;
     private final int[][] taquin;
     public ArrayList<Agent> agents;
 
@@ -34,58 +34,12 @@ public class Grille {
             for (int j = 0; j < size; j++) {
                 int value = taquin[i][j];
                 if (value != 0) {
-                    Agent c = new Agent(i, j, value);
+                    Agent c = new Agent(value);
                     c.draw(g, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                 }
             }
         }
     }
-
-    public void deplacerCaseVide(String direction) {
-        // Trouver la position de la case vide
-        int xVide = -1, yVide = -1;
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (taquin[i][j] == 0) {
-                    xVide = i;
-                    yVide = j;
-                    break;
-                }
-            }
-        }
-
-        // Déplacer la case vide selon la direction spécifiée
-        switch (direction) {
-            case "haut":
-                if (xVide > 0) {
-                    taquin[xVide][yVide] = taquin[xVide - 1][yVide];
-                    taquin[xVide - 1][yVide] = 0;
-                }
-                break;
-            case "bas":
-                if (xVide < size - 1) {
-                    taquin[xVide][yVide] = taquin[xVide + 1][yVide];
-                    taquin[xVide + 1][yVide] = 0;
-                }
-                break;
-            case "gauche":
-                if (yVide > 0) {
-                    taquin[xVide][yVide] = taquin[xVide][yVide - 1];
-                    taquin[xVide][yVide - 1] = 0;
-                }
-                break;
-            case "droite":
-                if (yVide < size - 1) {
-                    taquin[xVide][yVide] = taquin[xVide][yVide + 1];
-                    taquin[xVide][yVide + 1] = 0;
-                }
-                break;
-        }
-    }
-
-
-
-
 
 
     public ArrayList<Integer> getNeighboors(int caseId) {

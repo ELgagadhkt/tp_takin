@@ -1,22 +1,25 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Agent {
 
-    private final int x;
-    private final int y;
+
     private final int value;
     public int id;
     public int currentTile;
     public int goal;
     public Grille currentGrid;
 
-    public Agent(int x, int y, int value) {
-        this.x = x;
-        this.y = y;
+    public Agent(int value) {
         this.value = value;
     }
 
-
+    public ArrayList<Integer> convert () {
+        ArrayList<Integer> res = new ArrayList();
+        res.add(this.currentTile % this.currentGrid.size);
+        res.add(this.currentTile / this.currentGrid.size);
+        return res;
+    }
 
     public boolean isAtGoal () {
         return this.goal == this.currentTile;
