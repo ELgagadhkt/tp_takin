@@ -3,6 +3,6 @@ import javax.swing.*;
 public class Main{
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(swing::new);
+        SwingUtilities.invokeLater(() -> new JeuDeTaquin(4, 3));
     }
 }
